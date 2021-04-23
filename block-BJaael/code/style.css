@@ -33,3 +33,41 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* Custom Styles */
+
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+/* Flex */
+
+.flex {
+  display: flex;
+
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.aic {
+  align-items: center;
+}
+/* Container */ 
+
+.heading {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.container {
+  min-width: 100vh;
+}
