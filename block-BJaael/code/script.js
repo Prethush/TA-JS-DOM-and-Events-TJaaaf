@@ -1,13 +1,19 @@
 
-let container = document.querySelector(".container");
+let parentBox = document.querySelector(".boxes");
 for(let i = 0; i < 500; i++) {
     var div = document.createElement("div");
+    div.classList.add("box");
+    var h3 = document.createElement("h3");
     div.classList.add("flex", "jcc", "aic");
     div.style.width = "4rem";
     div.style.height = "4rem";
     div.style.border = "1px solid black";
-    container.append(div);
+    h3.innerText = randomNumber();
+    div.append(h3);
+    parentBox.append(div);
 }
+
+let boxes = document.querySelectorAll(".box");
 
 function randomColor() {
     let color;
@@ -24,10 +30,10 @@ function randomNumber() {
     return number;
 }
 function handler() {
-    for(let i = 0; i < 500; i++) {
-        container.children[i].style.backgroundColor = randomColor();
-        container.children[i].innerText = randomNumber();
-    }
+    boxes.forEach((box) => {
+        box.style.backgroundColor = randomColor();
+       box.querySelector("h3").innerText = randomNumber();
+    })
 }
 
-container.addEventListener("mousemove", handler);
+parentBox.addEventListener("mousemove", handler);
