@@ -4,8 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper and Scissors</title>
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+    <link rel = "stylesheet" href="style.css">
   </head>
   <body>
+    <div class="container">
+      <h1>Rock Paper Scissors Lizard Spock</h1>
+      <div class="game">
+        <div class="user-score flex">
+          <h2>You - <span class="user-span">0</span></h2>
+          <h2 class="display-text-user"></h2>
+        </div>
+        <div class="user icons flex jcc aic">
+          <i class="far fa-hand-rock" data-text="Rock"></i>
+          <i class="far fa-hand-paper" data-text="Paper"></i>
+          <i class="far fa-hand-scissors" data-text = "Scissors"></i>
+          <i class="far fa-hand-lizard" data-text = "Lizard"></i>
+          <i class="far fa-hand-spock" data-text = "Spock"></i>
+        </div>
+      
+        <div class="computer-score flex">
+          <h2>Computer - <span class="computer-span">0</span></h2>
+          <h2 class="display-text-computer"></h2>
+        </div>
+        <div class="computer icons flex jcc aic">
+          <i class="far fa-hand-rock"></i>
+          <i class="far fa-hand-paper"></i>
+          <i class="far fa-hand-scissors"></i>
+          <i class="far fa-hand-lizard"></i>
+          <i class="far fa-hand-spock"></i>
+        </div>
+        <div class="reset">
+          <i class="fas fa-sync refresh"></i>
+        </div>
+        <h2 class="result"></h2>
+      </div>
+     
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
