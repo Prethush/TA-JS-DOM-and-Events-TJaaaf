@@ -1,0 +1,149 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Custom Styles */
+
+/* Variables */
+
+:root {
+    --primary: rgb(37,143,250);
+    --secondary: red;
+    --text-white: #fff;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Flex */
+
+.flex {
+    display: flex;
+}
+
+.jcb {
+    justify-content: space-between;
+}
+.jcc {
+    justify-content: center;
+}
+.aic {
+    align-items: center;
+}
+
+
+/* Container */
+
+.container {
+    margin: 0 auto;
+    min-height: 80vh;
+    width: 45vw;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+h1 {
+    text-align: center;
+    padding: 1.5rem 0 ;
+    background-color: var(--primary);
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.game {
+    padding: 3rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    margin-right: .5rem;
+}
+.display-text-user {
+    color: var(--primary);
+}
+.user i {
+    color: var(--primary);
+}
+
+.computer i {
+    color: var(--secondary);
+}
+.icons i {
+    display: inline-block;
+     margin: 0 2rem; 
+    font-size: 3rem;
+    margin-bottom: 1rem; 
+}
+
+.reset {
+    margin-top: 2rem;
+}
+
+.reset i {
+    font-size: 1.8rem;
+}
+
+.display-text-computer {
+    color: var(--secondary);
+}
+
+.result {
+    text-align: center;
+    font-weight: 600;
+}
