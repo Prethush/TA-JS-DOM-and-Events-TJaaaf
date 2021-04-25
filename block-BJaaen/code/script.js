@@ -1,184 +1,93 @@
 
-let user = document.querySelectorAll(".user i");
-let arr = ["Rock", "Paper", "Scissors", "Lizard", "Spock"];
-let displayUser = document.querySelector(".display-text-user");
-let displayComputer = document.querySelector(".display-text-computer");
+
+
+let userRoot = document.querySelector(".user-icons");
+let computerRoot = document.querySelector(".computer-icons");
 let result = document.querySelector(".result");
-let userSpan = document.querySelector(".user-span");
-let computerSpan = document.querySelector(".computer-score span");
 let reset = document.querySelector(".refresh");
 
-let computerScore = 0;
-let userScore = 0;
 
-let initialValue = 0;
+let userSelected = {}, computerSelected = {};
 
-function randomNumber() {
-    let number= arr[Math.floor(Math.random() * 5)];
-    return number;
+function getWinner(user, computer) {
+    if(user.name === computer.name) {
+        result.innerText = "It's a Tie";
+    } else if(user.beats === computer.name) {
+        result.innerText = "User Won";
+    } else {
+        result.innerText = "Computer Wins";
+    }
 }
-function handleClick(event) {
-    displayUser.innerText = "--- " + event.target.dataset.text;
-    // event.target.style.color = "black";
-    displayComputer.innerText = "--- " + randomNumber();
-    console.log(displayUser.innerText);
-    console.log(displayComputer.innerText);
+
+
+function getRandomNumber(max = 3) {
+    return Math.floor(Math.random() * max);
+}
+
+let dataSet = [
+    {
+        name: "rock",
+        beats: "scissors"
+
+    },
+    {
+        name: "scissors",
+        beats: "paper"
+    },
+    {
+        name: "paper",
+        beats: "rock"
+    }
+] ;
+
+function createUserLayout() {
+    userRoot.innerHTML = "";
+    dataSet.forEach((icon) => {
+        let li = document.createElement("li");
+        let i = document.createElement("i");
+        i.className = `fa fa-hand-${icon.name}-o`;
+
+        if(userSelected.name === icon.name) {
+            li.classList.add("selected");
+        }
+        li.addEventListener("click", () => {
+            userSelected = icon;
+            computerSelected = dataSet[getRandomNumber()];
+            createComputerLayout();
+            createUserLayout();
+            getWinner(userSelected, computerSelected);
+           
+        });
+        li.append(i);
+        userRoot.append(li);
+        
+    });
     
-    if(displayUser.innerText === "--- Rock" && displayComputer.innerText === "--- Paper") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Paper" && displayComputer.innerText === "--- Rock") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Rock" && displayComputer.innerText === "--- Scissors") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Paper" && displayComputer.innerText === "--- Scissors") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Paper" && displayComputer.innerText === "--- Lizard") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Paper" && displayComputer.innerText === "---Spock") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Rock" && displayComputer.innerText === "--- Lizard") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Rock" && displayComputer.innerText === "--- Spock") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Scissors" && displayComputer.innerText === "--- Rock") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;;
-        return;
-    }
-    if(displayUser.innerText === "--- Scissors" && displayComputer.innerText === "--- Paper") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Scissors" && displayComputer.innerText === "--- Spock") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;
-         return;
-    }
-    if(displayUser.innerText === "--- Scissors" && displayComputer.innerText === "--- Lizard") {
-         result.innerText = "You Won!";
-         computerScore += 1;
-        computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Lizard" && displayComputer.innerText === "--- Paper") {
-         result.innerText = "You Won!";
-         userScore += 1;
-        userSpan.innerText = userScore;
-         return;
-    }
-    if(displayUser.innerText === "--- Lizard" && displayComputer.innerText === "--- Rock") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerScore;
-        return;
-    }
-     if(displayUser.innerText === "--- Lizard" && displayComputer.innerText === "--- Scissors") {
-        result.innerText = "You Lost!";
-        computerScore += 1;
-        computerSpan.innerText = computerSore;
-        return;
-     }
-    if(displayUser.innerText === "--- Lizard" && displayComputer.innerText === "--- Spock") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Spock" && displayComputer.innerText === "--- Paper") {
-         result.innerText = "You Lost!";
-         computerScore += 1;
-         computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Spock" && displayComputer.innerText === "--- Rock") {
-         result.innerText = "You Won!";
-         userScore += 1;
-        userSpan.innerText = userScore;
-         return;
-    }
-    if(displayUser.innerText === "--- Spock" && displayComputer.innerText === "--- Scissors") {
-        result.innerText = "You Won!";
-        userScore += 1;
-        userSpan.innerText = userScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Spock" && displayComputer.innerText === "--- Lizard") {
-         result.innerText = "You Lost!";
-         computerScore += 1;
-         computerSpan.innerText = computerScore;
-        return;
-    }
-    if(displayUser.innerText === "--- Spock" && displayComputer.innerText === "--- Spock") {
-         result.innerText = "It's a tie!";
-         return;
-    }
-     if(displayUser.innerText === "--- Rock" && displayComputer.innerText === "--- Rock") {
-         result.innerText = "It's a tie!";
-         return;
-     }
-    if(displayUser.innerText === "--- Paper" && displayComputer.innerText === "--- Paper") {
-        result.innerText = "It's a tie!";
-        return;
-    }
-    if(displayUser.innerText === "--- Scissors" && displayComputer.innerText === "--- Scissors") {
-        result.innerText = "It's a tie!";
-        return;
-    }
-    if(displayUser.innerText === "--- Lizard" && displayComputer.innerText === "--- Lizard") {
-        result.innerText = "It's a tie!";
-         return;
-    }
-                     
 }
 
-user.forEach((icon) => {
-    icon.addEventListener("click", handleClick);
-})
+createUserLayout();
+
+function createComputerLayout() {
+    computerRoot.innerHTML = "";
+    dataSet.forEach((icon) => {
+        let li = document.createElement("li");
+        let i = document.createElement("i");
+        i.className = `fa fa-hand-${icon.name}-o`;
+        if(computerSelected.name === icon.name) {
+            li.classList.add("selected");
+        }
+        li.append(i);
+        computerRoot.append(li);
+    });
+    
+}
+
+createComputerLayout();
 
 reset.addEventListener("click", () => {
-    userScore = 0;
-    computerScore = 0;
-    userSpan.innerText = userScore;
-    computerSpan.innerText = computerScore;
-    displayUser.innerHTML = "";
-    displayComputer.innerHTML = "";
-
+    userSelected = {};
+    computerSelected = {};
+    createUserLayout();
+    createComputerLayout();
+    result.innerText = "";
 })
-userSpan.innerText= userScore;
-computerSpan.innerText = computerScore;
