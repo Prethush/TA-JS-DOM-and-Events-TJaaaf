@@ -134,9 +134,10 @@ h1 {
 }
 .calculator {
     width: 500px;
-    height: 450px;
+    height: auto;
      background-color: darkmagenta;
     padding: 1rem;
+    border-radius: .5rem;
 }
 
 .display {
@@ -166,6 +167,9 @@ h1 {
     margin: .5rem;
 }
 
+.number:hover {
+    background-color: rgb(143, 138, 138);
+}
 .percentage, .equals {
     padding: 0 2.3rem;
     margin: .5rem;
