@@ -1,32 +1,22 @@
 
-let boxes = document.querySelectorAll(".boxes");
+let firstBoxes = document.querySelectorAll(".first li");
+let secondBox = document.querySelector(".second");
 
-let firstBoxContainer = Array.from(boxes[0].children);
-let secondBoxContainer = boxes[1];
 
-function myFunction(box) {
-    box.innerText = "";
-}
 
-function hideElements(box, event) {
-   setTimeout(function(){
-       myFunction(box);
-   }, 5000);
-}
-
-firstBoxContainer.forEach((box) => {
-    box.addEventListener("click", function(event) {
-        hideElements(box, event);
-    })
+firstBoxes.forEach((box, index) => {
+    box.addEventListener("click", (event) => {
+        event.target.innerText = index + 1;
+    setTimeout(()=> {
+        event.target.innerText = ""
+    }, 5000);
+})
 })
 
 
-function hideElements(event) {
-    event.target.innerText = "";
-}
-function handleEvent(event) {
-    setTimeout(function() {
-        hideElements(event);
-    }, 5000)
-}
-secondBoxContainer.addEventListener("click", handleEvent);
+secondBox.addEventListener("click", (event) => {
+   event.target.innerText = event.target.dataset.text;
+   setTimeout(() => {
+       event.target.innerText = "";
+   }, 5000);
+})
