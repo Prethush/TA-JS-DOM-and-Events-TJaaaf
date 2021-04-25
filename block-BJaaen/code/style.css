@@ -91,7 +91,7 @@ body {
 .container {
     margin: 0 auto;
     min-height: 80vh;
-    width: 45vw;
+    width: 30vw;
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
 }
 
@@ -102,9 +102,10 @@ h1 {
     color: var(--text-white);
     font-size: 2rem;
     font-weight: 700;
+    padding: 2rem;
 }
 
-.game {
+/* .game {
     padding: 3rem;
 }
 
@@ -146,4 +147,50 @@ h2 {
 .result {
     text-align: center;
     font-weight: 600;
+} */
+
+h2 {
+    
+    margin: 1rem 0 1rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.user-heading {
+    color: var(--primary);
+}
+.user-icons, .computer-icons {
+    padding: 2rem;
+}
+
+.computer-heading {
+    color: var(--secondary);
+}
+.user-icons i, .computer-icons i {
+    font-size: 3rem;
+    margin: 0 2rem;
+}
+
+.user-icons i {
+    color: var(--primary);
+}
+
+.computer-icons i {
+    color: var(--secondary);
+}
+
+.selected i{
+   color: black;
+}
+
+.refresh {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: var(--primary);
 }
