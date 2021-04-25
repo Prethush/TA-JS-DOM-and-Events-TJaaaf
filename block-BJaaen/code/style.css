@@ -105,49 +105,7 @@ h1 {
     padding: 2rem;
 }
 
-/* .game {
-    padding: 3rem;
-}
 
-h2 {
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 1.2rem;
-    margin-right: .5rem;
-}
-.display-text-user {
-    color: var(--primary);
-}
-.user i {
-    color: var(--primary);
-}
-
-.computer i {
-    color: var(--secondary);
-}
-.icons i {
-    display: inline-block;
-     margin: 0 2rem; 
-    font-size: 3rem;
-    margin-bottom: 1rem; 
-}
-
-.reset {
-    margin-top: 2rem;
-}
-
-.reset i {
-    font-size: 1.8rem;
-}
-
-.display-text-computer {
-    color: var(--secondary);
-}
-
-.result {
-    text-align: center;
-    font-weight: 600;
-} */
 
 h2 {
     
@@ -193,4 +151,8 @@ h2 {
     font-weight: 700;
     padding: 1rem;
     color: var(--primary);
+}
+
+.user-selected, .computer-selected {
+    text-transform: capitalize;
 }
