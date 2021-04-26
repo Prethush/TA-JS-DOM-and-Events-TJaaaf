@@ -35,3 +35,53 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form */
+
+.container {
+  background-color: gray;
+  padding: 2rem;
+  width: 30vw;
+}
+.form-control {
+  border: none;
+}
+
+label {
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: .5rem;
+  font-weight: 500;
+}
+
+input, button {
+  display: block;
+  padding: .5rem 1rem;
+  border-radius: .2rem;
+  height: 3rem;
+  width: 100%;
+  border: 0;
+  outline: 0;
+}
+
+button {
+  background-color: blue;
+  color: #fff;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.error input {
+  border: 3px solid red;
+}
+
+.success input {
+  border: 3px solid green;
+}
