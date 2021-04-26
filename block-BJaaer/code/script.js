@@ -18,19 +18,20 @@ div.append(close);
 console.log(close);
 function handleSubmit(event) {
     event.preventDefault();
-    nameElement.innerText = `Hello ${form.elements.name.value}`;
-    emailElement.innerText = `Email: ${form.elements.email[0].value}`;
-    moviesElement.innerText = `You Love: ${form.elements.gender.value}`;
-    colorElement.innerText = `Color: ${form.elements.color.value}`;
-    ratingElement.innerText = `Rating ${form.elements.range.value}`;
-     bookElement.innerText = `Book Genre: ${form.elements.drone.value}`;
+    nameElement.innerText = `Hello ${event.target.elements.name.value}`;
+    emailElement.innerText = `Email: ${event.target.elements.email[0].value}`;
+    moviesElement.innerText = `You Love: ${event.target.elements.gender.value}`;
+    colorElement.innerText = `Color: ${event.target.elements.color.value}`;
+    ratingElement.innerText = `Rating ${event.target.elements.range.value}`;
+     bookElement.innerText = `Book Genre: ${event.target.elements.drone.value}`;
      terms.innerText = `You ${form.elements.terms.checked ? "Agree" : "Disagree"} to Terms and Conditions`;
      div.append(nameElement, emailElement, moviesElement, colorElement, ratingElement, bookElement, terms);
+     
      document.body.append(div);
      document.querySelector(".close").addEventListener("click", (event) => {
          event.preventDefault();
-        div.style.display = "none";
-    
+            div.style.display = "none";
+            location.reload();
     }); 
     
     console.log(nameElement, emailElement, moviesElement, colorElement, ratingElement, bookElement, terms);
