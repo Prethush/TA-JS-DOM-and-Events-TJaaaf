@@ -81,7 +81,13 @@ button {
 .error input {
   border: 3px solid red;
 }
-
+.error span {
+  color: red;
+}
 .success input {
   border: 3px solid green;
+}
+
+.success span {
+  color: green;
 }
