@@ -8,11 +8,11 @@ console.log(close);
 function handleSubmit(event) {
     event.preventDefault();
     let div = document.createElement("div");
-div.className = "small-container";
-let close = document.createElement("a");
-close.className = "close";
-close.innerText = "Close";
-div.append(close);
+    div.className = "small-container";
+    let close = document.createElement("a");
+    close.className = "close";
+    close.innerText = "Close";
+    div.append(close);
     let nameElement = document.createElement("h2");
     let emailElement = document.createElement("p");
     let moviesElement = document.createElement("p");
@@ -29,17 +29,19 @@ div.append(close);
      bookElement.innerText = `Book Genre: ${event.target.elements.drone.value}`;
      terms.innerText = `You ${form.elements.terms.checked ? "Agree" : "Disagree"} to Terms and Conditions`;
      div.append(nameElement, emailElement, moviesElement, colorElement, ratingElement, bookElement, terms);
-     
+     console.log(div);
      document.body.append(div);
-     document.querySelector(".close").addEventListener("click", (event) => {
-         event.preventDefault();
-            div.style.display = "none";
-            // location.reload();
-    }); 
+
+     close.addEventListener("click", handleClick);
     
-    console.log(nameElement, emailElement, moviesElement, colorElement, ratingElement, bookElement, terms);
+    // console.log(nameElement, emailElement, moviesElement, colorElement, ratingElement, bookElement, terms);
 }
 
 
 form.addEventListener("submit", handleSubmit);
 
+function handleClick(event) {
+    event.preventDefault();
+    console.log(close);
+       event.target.parentElement.style.display = "none";
+}
