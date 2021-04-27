@@ -110,7 +110,7 @@ label {
     margin-bottom: .5rem;
 }
 
-input {
+input[type = "text"] {
     border: 0;
     outline: 0;
     width: 100%;
@@ -134,10 +134,12 @@ input:focus {
     border-radius: .3rem;
     padding:.75rem 1rem;
    margin-bottom: 1rem;
+   position: relative;
 }
 h2 {
     font-size: 1.3rem;
     font-weight: 600;
+    margin-right: 3rem;
 }
 
 .cross {
@@ -148,4 +150,11 @@ h2 {
     font-weight: 700;
     border: 0;
     outline: 0;
+    position: absolute;
+    right: 1rem;
+    
+}
+
+.checkbox {
+    margin-right: 1rem;
 }
