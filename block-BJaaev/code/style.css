@@ -134,7 +134,7 @@ li {
 li:hover span {
     display: inline-block;
 }
-span {
+li span {
     position: absolute;
     right: .5rem;
     color: red;
