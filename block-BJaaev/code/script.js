@@ -2,7 +2,13 @@
 let inputTodo = document.querySelector(".input-todo");
 let rootElm = document.querySelector("ul");
 let div = document.querySelector(".bottom-container")
+let all = document.querySelector(".all");
+let active = document.querySelector(".active");
+let completed = document.querySelector(".completed");
+let clear = document.querySelector(".clear");
+let count = document.querySelector(".count");
 
+let defaultSelected = "all";
 
 let todoArray = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -40,69 +46,17 @@ function handleChange(event) {
 }
 
 function itemsLeftCount() {
-    return  todoArray.filter((todo) => {
-        return todo.isDone === false;
+  let notCompleted=    todoArray.filter((todo) => {
+        return !todo.isDone;
     });
 
-}
-
-function handleAllItems(event) {
-    createtodoUI(rootElm, todoArray);
-}
-
-
-
-function handleActiveItems(event) {
-    rootElm.innerHTML = ""
-    todoArray.forEach((todo, i) => {
-        let li = document.createElement("li");
-        
-        let input = document.createElement("input");  
-        let label = document.createElement("label");
-        input.style.marginRight = ".5rem";
-        let span = document.createElement("span");
-        if(todo.isDone === false) {
-           
-            input.type = "checkbox";
-            input.checked = todo.isDone;
-            label.innerText = todo.name;
-            span.innerText = "X";
-            span.setAttribute("data-id", i);
-            li.append(input, label, span);
-        }
-        
-        rootElm.append(li);      
-        
-    })
-}
-
-function handleCompletedItems(event) {
-    rootElm.innerHTML = "";
-    todoArray.forEach((todo, i) => {
-        let li = document.createElement("li");
-        let input = document.createElement("input");  
-        input.style.marginRight = ".5rem";
-        let label = document.createElement("label");
-        let span = document.createElement("span");
-        if(todo.isDone === true) {
-            input.type = "checkbox";
-            input.checked = todo.isDone;
-            label.innerText = todo.name;
-            span.innerText = "X";
-            span.setAttribute("data-id", i);
-            li.append(input, label, span);
-        }
-        rootElm.append(li);    
-    });
-    
+    count.innerText = `${notCompleted.length} ${notCompleted.length > 1 ? "items" : "item"} left`;
 
 }
 
-function changeText(event) {
-    console.dir(event.target);
-    let id = event.target.dataset.id;
-    todoArray[id].name = event.target.innerText;
-}
+
+
+
 inputTodo.addEventListener("keyup", addItems);
 
 function createtodoUI(root, data) {
@@ -111,7 +65,7 @@ function createtodoUI(root, data) {
     data.forEach((todo, i) => {
         
         let li = document.createElement("li");
-        // li.classList.add("flex", "jcb", "aic");
+        li.classList.add("todo-container")
         let input = document.createElement("input");
         input.type = "checkbox";
         input.classList.add("checkbox");
@@ -120,48 +74,79 @@ function createtodoUI(root, data) {
         let label = document.createElement("label");
         label.innerText = todo.name;
         label.setAttribute("data-id", i);
-        if(todoArray[i].isDone === true) {
+        if(todo.isDone === true) {
         label.classList.add("strike");
         } else {
             label.classList.remove("strike");
             label.classList.add("unstrike");
         }   
         let span = document.createElement("span");
-        span.innerText = "X";
+        span.innerText = "❌";
         span.setAttribute("data-id", i);
         li.append(input, label, span);
        
         root.append(li);
         
-        label.addEventListener("select", changeText);
+       
         span.addEventListener("click", handleDelete);
         input.addEventListener("input", handleChange);
-        createsubUI(li, input, label, span, todoArray, i);
+        itemsLeftCount();
         
     });
     
    
 }
 
-
-function createsubUI(li, input, label, span, todoArray, i) {
-    
-        div.innerHTML = "";
-        let itemsLeft = document.createElement("span");
-        itemsLeft.innerText = `${itemsLeftCount().length} ${itemsLeftCount().length > 1 ? "items" : "item"} left`;
-        console.log(itemsLeft);
-        let allItems = document.createElement("a");
-        allItems.innerText = "All";
-        let activeItems = document.createElement("a");
-        activeItems.innerText = "Active";
-        let completed = document.createElement("a");
-        div.append(itemsLeft);
-        div.append(itemsLeft, allItems, activeItems, completed);
-        console.log(div);
-        completed.innerText = "Completed";
-        allItems.addEventListener("click", handleAllItems);
-        activeItems.addEventListener("click", handleActiveItems);
-        completed.addEventListener("click", handleCompletedItems);
-    
-}
 createtodoUI(rootElm, todoArray);
+
+all.addEventListener("click", () => {
+    createtodoUI(rootElm, todoArray);
+    defaultSelected = "all";
+    updateActiveButton();
+});
+
+clear.addEventListener("click", () => {
+    todoArray = todoArray.filter((todo) => !todo.isDone);
+    defaultSelected = "clear";
+    updateActiveButton();
+    createtodoUI(rootElm, todoArray);
+});
+
+active.addEventListener("click", () => {
+    let notCompleted = todoArray.filter((todo) => !todo.isDone);
+    defaultSelected = "active";
+    updateActiveButton();
+    createtodoUI(rootElm, notCompleted);
+})
+
+completed.addEventListener("click", () => {
+    let completedArray = todoArray.filter((todo) => todo.isDone);
+    defaultSelected = "completed";
+    updateActiveButton();
+    createtodoUI(rootElm, completedArray);
+})
+
+function updateActiveButton(btn = defaultSelected) {
+    all.classList.remove("selected");
+    active.classList.remove("selected");
+    completed.classList.remove("selected");
+    clear.classList.remove("selected");
+
+    if(btn === "all") {
+        all.classList.add("selected");
+    }
+    if(btn === "active") {
+        active.classList.add("selected");
+    }
+    if(btn === "completed") {
+        completed.classList.add("selected");
+    }
+    if(btn === "clear") {
+        clear.classList.add("selected");
+    }
+
+}
+
+updateActiveButton();
+
+itemsLeftCount();
