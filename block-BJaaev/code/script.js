@@ -145,21 +145,23 @@ function createtodoUI(root, data) {
 
 
 function createsubUI(li, input, label, span, todoArray, i) {
+    
         div.innerHTML = "";
         let itemsLeft = document.createElement("span");
         itemsLeft.innerText = `${itemsLeftCount().length} ${itemsLeftCount().length > 1 ? "items" : "item"} left`;
+        console.log(itemsLeft);
         let allItems = document.createElement("a");
         allItems.innerText = "All";
         let activeItems = document.createElement("a");
         activeItems.innerText = "Active";
         let completed = document.createElement("a");
-        
+        div.append(itemsLeft);
         div.append(itemsLeft, allItems, activeItems, completed);
-        
+        console.log(div);
         completed.innerText = "Completed";
         allItems.addEventListener("click", handleAllItems);
         activeItems.addEventListener("click", handleActiveItems);
         completed.addEventListener("click", handleCompletedItems);
-
+    
 }
 createtodoUI(rootElm, todoArray);
