@@ -1,4 +1,4 @@
-let got = {
+let gots = {
   houses: [
     {
       name: "Starks",
