@@ -399,7 +399,7 @@ let got = {
     rootElm.innerHTML = "";
     got.houses.forEach((house) => {
       house.people.forEach((peopleName) => {
-        if(peopleName.name.includes(event.target.value)) {
+        if(peopleName.name.toUpperCase().includes(event.target.value.toUpperCase()) || (peopleName.name.toLowerCase().includes(event.target.value.toLowerCase()))) {
           console.log(event.target.value);
         let li = document.createElement("li");
         li.classList.add("flex-30", "mini-container", "flex", "column", "jcc", "aic");
