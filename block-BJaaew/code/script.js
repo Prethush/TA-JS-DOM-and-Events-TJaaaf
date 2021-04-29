@@ -332,7 +332,8 @@ let got = {
   let searchPerson = document.querySelector(".search");
   console.dir(searchPerson);
 
-  got.houses.forEach((house) => {
+  function creategotUI() {
+    got.houses.forEach((house) => {
       house.people.forEach((peopleName) => {
         let li = document.createElement("li");
         li.classList.add("flex-30", "mini-container", "flex", "column", "jcc", "aic");
@@ -358,6 +359,8 @@ let got = {
       a.setAttribute("data-houseName", house.name);
       houseContainer.append(a);
   })
+  }
+  
 
   let allHouses = document.querySelectorAll(".houses a");
   let allHouseArray = got.houses;
@@ -430,3 +433,6 @@ function houseSort(e, house) {
     e.target.classList.add("selected");
   }
 }
+
+
+creategotUI();
