@@ -328,7 +328,9 @@ let got = {
   };
 
   let rootElm = document.querySelector("ul");
-  let houseNames = document.querySelector(".houses");
+  let houseContainer = document.querySelector(".houses");
+  let searchPerson = document.querySelector(".search");
+  console.dir(searchPerson);
 
   got.houses.forEach((house) => {
       house.people.forEach((peopleName) => {
@@ -353,5 +355,78 @@ let got = {
       let a = document.createElement("a");
       a.innerText = house.name;
       a.classList.add("house");
-      houseNames.append(a);
+      a.setAttribute("data-houseName", house.name);
+      houseContainer.append(a);
   })
+
+  let allHouses = document.querySelectorAll(".houses a");
+  let allHouseArray = got.houses;
+
+  allHouses.forEach((house, i) => {
+    house.addEventListener("click", (event) => {
+      rootElm.innerHTML = "";
+      let selected = house.dataset.houseName;
+      houseSort(event, selected);
+      allHouseArray[i].people.forEach((peopleName) => {
+        
+        let li = document.createElement("li");
+        li.classList.add("flex-30", "mini-container", "flex", "column", "jcc", "aic");
+        let img = document.createElement("img");
+        img.src = peopleName.image;
+        let h2 = document.createElement("h2");
+        h2.innerText = peopleName.name;
+        h2.classList.add("name");
+        let p = document.createElement("p");
+        p.innerText = peopleName.description;
+        p.classList.add("desc");
+        let button = document.createElement("a");
+        button.href = peopleName.wikiLink;
+        button.innerText = "Know More";
+        button.classList.add("link");
+        li.append(img, h2, p, button);
+        rootElm.append(li);
+        
+      });
+      
+      console.log(house);
+    });
+   
+    
+  });
+
+
+  searchPerson.addEventListener("keyup", (event) => {
+    rootElm.innerHTML = "";
+    got.houses.forEach((house) => {
+      house.people.forEach((peopleName) => {
+        if(peopleName.name.includes(event.target.value)) {
+          console.log(event.target.value);
+        let li = document.createElement("li");
+        li.classList.add("flex-30", "mini-container", "flex", "column", "jcc", "aic");
+        let img = document.createElement("img");
+        img.src = peopleName.image;
+        let h2 = document.createElement("h2");
+        h2.innerText = peopleName.name;
+        h2.classList.add("name");
+        let p = document.createElement("p");
+        p.innerText = peopleName.description;
+        p.classList.add("desc");
+        let button = document.createElement("a");
+        button.href = peopleName.wikiLink;
+        button.innerText = "Know More";
+        button.classList.add("link");
+        li.append(img, h2, p, button);
+        rootElm.append(li);
+        }
+      });
+  });
+});
+
+function houseSort(e, house) {
+  allHouses.forEach((house) => {
+    house.classList.remove("selected");
+  });
+  if(e.target.dataset.houseName === house) {
+    e.target.classList.add("selected");
+  }
+}
