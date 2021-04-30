@@ -7,7 +7,7 @@ console.log(info);
 
 grid.classList.add("grid");
 game.append(grid);
-setInterval(setTime, 1000);
+
 let cardsArray = [
     {
         name: "character01",
@@ -90,7 +90,7 @@ let firstGuess = "";
 let secondGuess = "";
 let delay = 1200;
 let previousTarget = null;
-let counter = 0;
+var counter = 0;
 
 const match = () => {
    
@@ -113,7 +113,7 @@ const resetGuesses = () => {
 }
 
 function handleClick(event) {
-    
+   
     let clicked = event.target;
     console.log(previousTarget);
     console.log(clicked.parentNode.dataset.name);
@@ -145,6 +145,9 @@ function handleClick(event) {
     }
     previousTarget = clicked;
     counter += 1;
+    if(counter === 1) {
+        setInterval(setTime, 1000);
+    }
     updateAttempts(counter);
 }
 
@@ -207,3 +210,9 @@ function pad(val) {
     }
 }
 
+
+    
+   
+
+
+   
