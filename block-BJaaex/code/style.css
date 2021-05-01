@@ -59,6 +59,8 @@ html {
 
 body {
     line-height: 1.5;
+    background-color: #49beb7;
+    padding-bottom: 2rem;
 }
 
 /* Flex */
@@ -93,7 +95,7 @@ h1 {
     text-align: center;
     font-size: 2.5rem;
     padding: 1rem 0;
-    background-color: rgb(169, 72, 238);
+    background-color: #085f63;
     font-weight: 700;
     color: #fff;
 }
@@ -103,11 +105,7 @@ h1 {
     margin: 0 auto;
 }
 
- .game {
-    max-width: 1000px;
-    margin: 0 auto; 
-    padding: 1.5rem 0;
-} 
+ 
 .grid {
     max-width: 800px;
     margin: 0 auto;
@@ -119,9 +117,9 @@ h1 {
 
 .card {
     position: relative;
-    transition: all 0.4s linear;
+     transition: all 0.4s linear; 
     margin: .3rem;
-    transform-style: preserve-3d;
+     transform-style: preserve-3d; 
 }
 
 .card,
@@ -134,12 +132,12 @@ h1 {
 .back, 
 .front {
       position: absolute; 
-      backface-visibility: hidden;  
+       backface-visibility: hidden;   
 }
 
 
 .front {
-     z-index: 2;  
+     z-index: 2;   
     background: url("assets/media/pokemon.png") center center no-repeat;
     background-size: cover;
     
@@ -152,13 +150,13 @@ h1 {
 
 .matched .front {
     
-    background-image: url("assets/media/tick01.jpg");
+    background-image: url("assets/media/success.jpeg");
 
 }
 
 
 .back {
-    transform: rotateY(180deg);
+      transform: rotateY(180deg);  
     background-repeat: no-repeat;
     background-size: contain;
     object-fit: contain;
@@ -169,7 +167,8 @@ h1 {
 
 
 p {
-    font-size: 1.3rem;
+    font-size: 2rem;
     margin: 2rem 0;
-    font-weight: 600;
+    font-weight: 700;
+    color: #ff5959
 }
