@@ -3,7 +3,7 @@ let grid = document.createElement("section");
 let info = document.querySelector(".tracker");
 let minutes = document.querySelector(".minutes");
 let seconds = document.querySelector(".seconds");
-console.log(info);
+
 
 grid.classList.add("grid");
 game.append(grid);
@@ -92,6 +92,8 @@ let delay = 1200;
 let previousTarget = null;
 var counter = 0;
 
+//Math Function
+
 const match = () => {
    
     let selected = document.querySelectorAll(".selected");
@@ -100,6 +102,8 @@ const match = () => {
         console.log(card);
     });
 }
+
+// Reguess Function
 
 const resetGuesses = () => {
     
@@ -115,9 +119,10 @@ const resetGuesses = () => {
 function handleClick(event) {
    
     let clicked = event.target;
+    console.log(clicked);
     console.log(previousTarget);
-    console.log(clicked.parentNode.dataset.name);
     if(clicked === previousTarget || clicked.nodeName === "SECTION" || clicked.parentNode.classList.contains("selected") || clicked.parentNode.classList.contains("matched")) {
+        
         return;
     }
     if(count <  2) {
@@ -125,11 +130,11 @@ function handleClick(event) {
        
     if(count === 1) {
         firstGuess = clicked.parentNode.dataset.name;
-        console.log(firstGuess);
+         console.log(firstGuess);
         clicked.parentNode.classList.add("selected");
     } else {
         secondGuess = clicked.parentNode.dataset.name;
-        console.log(secondGuess);
+         console.log(secondGuess);    
         clicked.parentNode.classList.add("selected");
     }
     if(firstGuess !== "" && secondGuess !== "") {
@@ -140,7 +145,7 @@ function handleClick(event) {
         } else {
            setTimeout(resetGuesses, delay);
         }
-    }   
+    }
      
     }
     previousTarget = clicked;
@@ -151,8 +156,10 @@ function handleClick(event) {
     updateAttempts(counter);
 }
 
+// Array Concatination
+
 let gameGrid = cardsArray.concat(cardsArray);
-gameGrid.sort(() => 0.5 - Math.random());
+gameGrid.sort(() => 0.5 - Math.random()); //to shuffle the array each time
 
 gameGrid.forEach((card) => {
     let div = document.createElement("div");
@@ -181,6 +188,8 @@ gameGrid.forEach((card) => {
 
 
 grid.addEventListener("click", handleClick);
+
+
 
 function updateAttempts(data) {
     info.innerText = data;
